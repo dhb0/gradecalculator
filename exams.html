@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    body{
+        background-color: #06b2bb;
+        color: whitesmoke;
+        font-family: 'Alata', sans-serif;
+    }
+
+    #main{
+        margin: auto;
+        margin-top: 3rem;
+        text-align: center;
+        font-size: 20px;
+    }
+    #main *{
+        margin-top: 0.4rem;
+    }
+    label{
+        display: block;
+    }
+
+    #calc{
+        background-color: #f78828;
+        border: none;
+        outline: none;
+        height: 2rem;
+        width: 10rem;
+        color: whitesmoke;
+        font-family: inherit;
+        font-size: 0.8em;
+        border-radius: 3px;
+        margin-top: 10px;
+        padding: 5px;
+    }
+
+    input[type='number']{
+        height:1.6rem;
+    }
+</style>
+</head>
+<body>
+    <div id="main">
+        <form>
+            <label for="">Midterm I Score (30%)</label>
+            <input type="number" id='m1' max="100">
+            <label for="">Midterm II Score (30%)</label>
+            <input type="number" id="m2" max="100">
+            <label for="">Final Score (40%)</label>
+            <input type="number" id="final" max="100">
+        </form>
+            <button id = 'calc' onclick="yGrade()">Click For Your Grade</button>
+            <div id="result">
+                <h2 id="totalgr"></h2>
+                <h3 id="letters"></h3>
+            </div>
+    </div>
+
+<script>
+       function yGrade(){
+        var m1 = Number(document.getElementById('m1').value);
+        var m2 = Number(document.getElementById('m2').value);
+        var final = Number(document.getElementById('final').value);
+        var totalPoint = (m1*3/10) + (m2*3/10) + (final*4/10);
+            document.getElementById('totalgr').innerHTML = `You have collected ${totalPoint.toFixed(1)} points`;
+        var result;
+        if(totalPoint<65){
+            result = 'F';
+        }else if(totalPoint>=65 && totalPoint<70){
+            result = 'D';
+        }else if(totalPoint>=70 && totalPoint<80){
+            result = 'C';
+        }else if(totalPoint>=80 && totalPoint<90){
+            result = 'B';
+        }else{result = 'A'}
+
+        document.getElementById('letters').innerHTML = `Your grade is ${result}.`
+
+       }
+</script>
+</body>
+</html>
